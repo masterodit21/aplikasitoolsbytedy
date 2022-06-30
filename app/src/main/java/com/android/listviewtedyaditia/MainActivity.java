@@ -19,15 +19,16 @@ public class MainActivity extends AppCompatActivity {
     int[] iconList = new int[]{
             R.drawable.kalkulator, R.drawable.kamera,
             R.drawable.stopwatch, R.drawable.senter,
+            R.drawable.maps, R.drawable.sms,
             R.drawable.profil
     };
 
     String[] Headline = {"Kalkulator", "Kamera", "Stopwatch",
-            "Senter", "Profil"
+            "Senter", "Maps", "SMS", "Profil"
     };
 
     String[] Subhead = {"Alat penjumlahan angka", "kamera", "stopwatch",
-            "lampu", "profil saya"
+            "lampu", "Google Maps", "Pengiriman Pesan", "Profil Saya"
     };
 
     @Override
@@ -66,14 +67,26 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(intent, 0);
                 }
 
-                //posisi profil
+                //posisi maps
                 if (position == 4) {
+                    Intent intent = new Intent(view.getContext(), MapsActivity.class);
+                    startActivityForResult(intent, 0);
+                }
+
+                //posisi SMS
+                if (position == 5) {
+                    Intent intent = new Intent(view.getContext(), SMSActivity.class);
+                    startActivityForResult(intent, 0);
+                }
+
+                //posisi profil
+                if (position == 6) {
                     Intent intent = new Intent(view.getContext(), profil.class);
                     startActivityForResult(intent, 0);
                 }
 
                 Toast.makeText(getApplicationContext(),
-                        "You have selected : " + Headline[position],
+                        "Kamu Telah Memilih : " + Headline[position],
                         Toast.LENGTH_SHORT).show();
 
 

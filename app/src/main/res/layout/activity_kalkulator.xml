@@ -92,12 +92,12 @@
         android:text="-" />
 
     <Button
-        android:text="BERSIHKAN"
+        android:id="@+id/bersihkan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bersihkan"
         android:layout_below="@+id/tambah"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="BERSIHKAN" />
 
     <Button
         android:id="@+id/bagi"
