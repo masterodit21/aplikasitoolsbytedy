@@ -1,5 +1,6 @@
 package com.android.listviewtedyaditia;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -12,15 +13,33 @@ import android.widget.Toast;
 import android.provider.MediaStore;
 
 public class kamera extends AppCompatActivity {
+
+    ActionBar actionBar;
+
     private Button btnCapture;
     private ImageView imgCapture;
     private static final int Image_Capture_Code = 1;
 
+    //navigasi tombol back
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    //aplikasi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kamera);
+
+        actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btnCapture =(Button)findViewById(R.id.btnTakePicture);
         imgCapture = (ImageView) findViewById(R.id.capturedImage);

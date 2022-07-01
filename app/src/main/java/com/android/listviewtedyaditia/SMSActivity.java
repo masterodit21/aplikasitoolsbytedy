@@ -1,5 +1,6 @@
 package com.android.listviewtedyaditia;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.PendingIntent;
@@ -13,8 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SMSActivity extends AppCompatActivity {
+    ActionBar actionBar;
+
     private Button btnSend;
     private EditText tvMessage;
     private EditText tvNumber;
@@ -29,10 +33,27 @@ public class SMSActivity extends AppCompatActivity {
         }
     };
 
+    //navigasi tombol back
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+    }
+
+    //Aplikasi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smsactivity);
+
+        actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //intent to filter for SMS message received
         intentFilter = new IntentFilter();
@@ -45,9 +66,15 @@ public class SMSActivity extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            if((tvNumber.getText().length()>0) && (tvMessage.getText().length()>0))
+            {
                 String myMsg = tvMessage.getText().toString();
                 String txtNumber = tvNumber.getText().toString();
                 sendMsg(txtNumber, myMsg);
+            }
+            else {
+                Toast.makeText(SMSActivity.this, "Masukin  nomor sama pesannya dulu ya :)", Toast.LENGTH_LONG).show();
+            }
             }
         });
     }

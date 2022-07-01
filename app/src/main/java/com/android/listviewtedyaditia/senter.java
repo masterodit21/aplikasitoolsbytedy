@@ -1,5 +1,6 @@
 package com.android.listviewtedyaditia;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -13,20 +14,38 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class senter extends AppCompatActivity {
+    ActionBar actionBar;
 
     private CameraManager cameraManager;
     private String cameraId;
-    private ImageButton imangeButtonOnOff;
+    private ImageButton imageButtonOnOff;
     private ImageView imageViewLight;
     private Boolean isTorchOn;
     private MediaPlayer mp;
 
 
+    //navigasi tombol back
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    //Aplikasi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_senter);
-        imangeButtonOnOff = (ImageButton) findViewById(R.id.imageButton_on_off);
+
+        actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        imageButtonOnOff = (ImageButton) findViewById(R.id.imageButton_on_off);
         imageViewLight = (ImageView) findViewById(R.id.imageViewLight);
         isTorchOn = false;
         Boolean isFlashAvailable = getApplicationContext().getPackageManager()
@@ -43,7 +62,7 @@ public class senter extends AppCompatActivity {
             }
         }
 
-        imangeButtonOnOff.setOnClickListener(new View.OnClickListener() {
+        imageButtonOnOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -66,7 +85,7 @@ public class senter extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 cameraManager.setTorchMode(cameraId, true);
                 playOnOffSound();
-                imangeButtonOnOff.setImageResource(R.drawable.button_off);
+                imageButtonOnOff.setImageResource(R.drawable.on);
                 imageViewLight.setImageResource(R.drawable.light_on);
             }
         } catch (Exception e) {
@@ -79,7 +98,7 @@ public class senter extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 cameraManager.setTorchMode(cameraId, false);
                 playOnOffSound();
-                imangeButtonOnOff.setImageResource(R.drawable.button_on);
+                imageButtonOnOff.setImageResource(R.drawable.off);
                 imageViewLight.setImageResource(R.drawable.light_off);
             }
 

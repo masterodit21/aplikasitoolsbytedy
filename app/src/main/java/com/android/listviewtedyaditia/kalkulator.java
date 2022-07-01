@@ -1,5 +1,6 @@
 package com.android.listviewtedyaditia;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -11,14 +12,32 @@ import android.widget.Toast;
 
 public class kalkulator extends AppCompatActivity {
 
+    ActionBar actionBar;
+
     EditText angka_pertama, angka_kedua;
     Button tambah, kurang, kali, bagi, bersihkan;
     TextView hasil;
 
+    //navigasi tombol back
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    //aplikasi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kalkulator);
+
+        actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         angka_pertama = (EditText) findViewById(R.id.angka_pertama);
         angka_kedua = (EditText) findViewById(R.id.angka_kedua);
@@ -47,6 +66,8 @@ public class kalkulator extends AppCompatActivity {
                 }
             }
         });
+
+
 
         kurang.setOnClickListener(new View.OnClickListener() {
             @Override

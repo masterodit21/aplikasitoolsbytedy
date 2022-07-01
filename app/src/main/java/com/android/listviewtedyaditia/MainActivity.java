@@ -2,8 +2,13 @@ package com.android.listviewtedyaditia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -13,6 +18,8 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private AlertDialog.Builder alertDialogBuilder;
 
     ListView lv;
 
@@ -31,10 +38,13 @@ public class MainActivity extends AppCompatActivity {
             "lampu", "Google Maps", "Pengiriman Pesan", "Profil Saya"
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        alertDialogBuilder = new AlertDialog.Builder(this);
 
         lv = findViewById(R.id.list);
         ListAdapter ListAdapter = new com.android.listviewtedyaditia.ListAdapter(this, iconList, Headline, Subhead);
@@ -93,4 +103,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Keluar Aplikasi")
+                .setMessage("Anda Yakin Ingin Keluar?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        MainActivity.super.onBackPressed();
+                    }
+                }).create().show();
+    }
+
 }

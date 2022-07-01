@@ -1,5 +1,6 @@
 package com.android.listviewtedyaditia;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class stopwatch extends AppCompatActivity {
+    ActionBar actionBar;
 
     TextView timer ;
     Button start, pause, reset;
@@ -17,10 +19,26 @@ public class stopwatch extends AppCompatActivity {
     Handler handler;
     int Seconds, Minutes, MilliSeconds ;
 
+    //navigasi tombol back
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    //Aplikasi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch);
+
+        actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         timer = (TextView)findViewById(R.id.tvTimer);
         start = (Button)findViewById(R.id.btStart);

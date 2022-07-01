@@ -17,14 +17,13 @@
 
     <ImageButton
         android:id="@+id/imageButton_on_off"
-        android:layout_width="222dp"
-        android:layout_height="162dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:layout_below="@+id/imageViewLight"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="108dp"
-        android:layout_marginTop="164dp"
-        android:src="@drawable/button_off"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="406dp" />
+        android:layout_gravity="center"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="225dp"
+        android:src="@drawable/off" />
 
 </RelativeLayout>
