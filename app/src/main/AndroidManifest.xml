@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ListviewTedyAditia">
         <activity
+            android:name=".login"
+            android:exported="false" />
+        <activity
             android:name=".Network"
             android:exported="false" />
         <activity
