@@ -21,6 +21,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ListviewTedyAditia">
         <activity
+            android:name=".Activity_list_view"
+            android:exported="false" />
+        <activity
+            android:name=".SQLite"
+            android:exported="false" />
+        <activity
             android:name=".SMSActivity"
             android:exported="true" />
         <!--

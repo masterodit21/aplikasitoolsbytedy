@@ -26,16 +26,16 @@ public class MainActivity extends AppCompatActivity {
     int[] iconList = new int[]{
             R.drawable.kalkulator, R.drawable.kamera,
             R.drawable.stopwatch, R.drawable.senter,
-            R.drawable.maps, R.drawable.sms,
+            R.drawable.maps, R.drawable.sms, R.drawable.SQLite,
             R.drawable.profil
     };
 
     String[] Headline = {"Kalkulator", "Kamera", "Stopwatch",
-            "Senter", "Maps", "SMS", "Profil"
+            "Senter", "Maps", "SMS","SQLite", "Profil"
     };
 
     String[] Subhead = {"Alat penjumlahan angka", "kamera", "stopwatch",
-            "lampu", "Google Maps", "Pengiriman Pesan", "Profil Saya"
+            "lampu", "Google Maps", "Pengiriman Pesan","Lokal Database", "Profil Saya"
     };
 
 
@@ -89,8 +89,14 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(intent, 0);
                 }
 
-                //posisi profil
+                //posisi SQLite
                 if (position == 6) {
+                    Intent intent = new Intent(view.getContext(), SQLite.class);
+                    startActivityForResult(intent, 0);
+                }
+
+                //posisi profil
+                if (position == 7) {
                     Intent intent = new Intent(view.getContext(), profil.class);
                     startActivityForResult(intent, 0);
                 }
