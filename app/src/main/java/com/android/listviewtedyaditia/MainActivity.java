@@ -26,16 +26,15 @@ public class MainActivity extends AppCompatActivity {
     int[] iconList = new int[]{
             R.drawable.kalkulator, R.drawable.kamera,
             R.drawable.stopwatch, R.drawable.senter,
-            R.drawable.maps, R.drawable.sms, R.drawable.SQLite,
-            R.drawable.profil
+            R.drawable.maps, R.drawable.sms, R.drawable.sqlite, R.drawable.interneti, R.drawable.profil
     };
 
     String[] Headline = {"Kalkulator", "Kamera", "Stopwatch",
-            "Senter", "Maps", "SMS","SQLite", "Profil"
+            "Senter", "Maps", "SMS","SQLite","Network", "Profil"
     };
 
     String[] Subhead = {"Alat penjumlahan angka", "kamera", "stopwatch",
-            "lampu", "Google Maps", "Pengiriman Pesan","Lokal Database", "Profil Saya"
+            "lampu", "Google Maps", "Pengiriman Pesan","Lokal Database","Akses Internet", "Profil Saya"
     };
 
 
@@ -95,8 +94,14 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(intent, 0);
                 }
 
-                //posisi profil
+                //posisi Network
                 if (position == 7) {
+                    Intent intent = new Intent(view.getContext(), Network.class);
+                    startActivityForResult(intent, 0);
+                }
+
+                //posisi profil
+                if (position == 8) {
                     Intent intent = new Intent(view.getContext(), profil.class);
                     startActivityForResult(intent, 0);
                 }
